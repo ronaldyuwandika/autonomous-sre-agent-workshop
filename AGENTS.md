@@ -1,7 +1,8 @@
 # Context for coding agents (Antigravity CLI and others)
 
-This repo is a 90-minute workshop: an SRE agent built with Google ADK + Gemini
-that diagnoses a broken Cloud Run service and rolls it back after a human approves.
+This repo is a 90-minute workshop: an SRE agent built with Google ADK + Gemini that
+diagnoses Cloud Run incidents and rolls back or scales, after a Slack approval or, for
+allowed actions, on its own (AUTONOMY=auto).
 
 ## Layout
 
