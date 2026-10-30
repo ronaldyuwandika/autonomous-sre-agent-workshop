@@ -10,7 +10,6 @@ You pair with **Antigravity CLI loaded with Google's Agent Skills** for one step
 ```
 checkout (Cloud Run) ─5xx / CPU / mem─▶ Cloud Monitoring alert ──▶ Pub/Sub ──push──▶ sre-agent (Cloud Run)
         ▲                                                                       │ read-only tools:
-        │                                                                       │ logs, request stats, revisions
         │                                                                       │ logs, request stats, revisions,
         │                                                                       │ CPU/memory/instances (Monitoring)
         │                                                                       ▼ proposes rollback OR scale
