@@ -1,0 +1,10 @@
+# Only the agent service is built from the repo root; the app deploys from ./app
+.git
+.gitignore
+app/
+docs/
+scripts/
+alerting/
+**/__pycache__/
+**/.env
+.venv/

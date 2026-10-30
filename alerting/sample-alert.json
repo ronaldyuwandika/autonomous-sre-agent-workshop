@@ -1,0 +1,11 @@
+{
+  "version": "1.2",
+  "incident": {
+    "incident_id": "manual-demo-001",
+    "state": "open",
+    "policy_name": "checkout 5xx errors",
+    "condition_name": "checkout 5xx > 5 per minute",
+    "resource": { "type": "cloud_run_revision", "labels": { "service_name": "checkout" } },
+    "summary": "5xx request count for checkout is above the threshold of 5."
+  }
+}
