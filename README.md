@@ -54,6 +54,7 @@ Each lab is hybrid: the scripts and reference code get you there reliably, and o
 | `service/notify.py` | Slack (webhook + buttons) and email (SMTP) reports |
 | `agent/sre_agent/policy.py` | `AUTONOMY` / `AUTO_ACTIONS`: what may run without a click |
 | `prompts/` | The agent-step prompt for each lab |
+| `docs/5-whys-and-pov.md` | 5 Whys for both incidents, and the incident from three points of view |
 | `AGENTS.md` | Ground rules for the coding agent (read-only by default, keep names, keep guardrails) |
 | `alerting/` | 5xx and saturation policy JSON for the script fallbacks; generated Terraform lands in `alerting/terraform/` |
 | `scripts/` | One script per lab step, plus skills setup and teardown |
@@ -140,6 +141,9 @@ the same report. Click **Approve**: the message updates with the result. Not an 
 The click is refused. No Slack? `./scripts/incidents.sh approve <incident_id>`.
 Alert slow? `./scripts/05-simulate-alert.sh`.
 
+**Checkpoint discussion:** walk the 5 Whys for the bad release and the three points of view
+(on-call, agent, approver) in [`docs/5-whys-and-pov.md`](docs/5-whys-and-pov.md).
+
 ## Lab 4 — Self-healing on resource exhaustion (17 min)
 
 **Agent steps:** `prompts/lab4-policy-review.md` (what may the agent do alone?), then
@@ -162,6 +166,9 @@ gcloud run services describe checkout --region asia-southeast2 --format 'yaml(sp
 
 **Same incident, approval-based:** `AUTONOMY=approve ./scripts/04-deploy-agent.sh`, then
 `./scripts/07-exhaust.sh` again. This time the scaling proposal waits behind Slack buttons.
+
+**Checkpoint discussion:** the 5 Whys for exhaustion in [`docs/5-whys-and-pov.md`](docs/5-whys-and-pov.md):
+the agent answers whys 1–4 with metrics and buys time; why 5 (sizing without a load test) is the team's.
 
 ## Guardrails built in
 
