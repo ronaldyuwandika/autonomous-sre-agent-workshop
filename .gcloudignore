@@ -8,3 +8,5 @@ alerting/
 **/__pycache__/
 **/.env
 .venv/
+prompts/
+AGENTS.md

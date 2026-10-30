@@ -2,6 +2,7 @@
 # Delete everything the workshop created. Asks before deleting.
 set -euo pipefail
 source "$(dirname "$0")/env.sh"
+if [ -d "$(dirname "$0")/../alerting/terraform/.terraform" ]; then echo "Note: Lab 3 Terraform found. Run first: terraform -chdir=alerting/terraform destroy"; fi
 echo "This deletes in $PROJECT_ID: Cloud Run $APP_SERVICE + $AGENT_SERVICE, Pub/Sub $TOPIC, the alert policy, channel and 3 service accounts."
 read -r -p "Type the project id to confirm: " CONFIRM
 [ "$CONFIRM" = "$PROJECT_ID" ] || { echo "Aborted."; exit 1; }
