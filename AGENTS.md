@@ -6,8 +6,8 @@ that diagnoses a broken Cloud Run service and rolls it back after a human approv
 ## Layout
 
 - `app/` — the checkout API (Flask) that gets broken on purpose.
-- `agent/sre_agent/` — ADK agents and tools (`tools.py`, `agent.py`).
-- `service/` — Lab 3 alert service (Pub/Sub push → agent → approval endpoints).
+- `agent/sre_agent/` — ADK agents, tools and the remediation policy (`tools.py`, `agent.py`, `policy.py`).
+- `service/` — alert service (Pub/Sub push → agent → policy → auto-remediate or Slack approval; `notify.py` sends Slack/email).
 - `scripts/` — one script per lab step; `scripts/env.sh` holds shared names.
 - `prompts/` — the prompts participants give you, one file per lab.
 
@@ -23,6 +23,9 @@ that diagnoses a broken Cloud Run service and rolls it back after a human approv
 - Resource names must match `scripts/env.sh` (service `checkout`, topic
   `sre-alerts`, service accounts `checkout-runtime`, `sre-agent`, `pubsub-pusher`)
   so the lab scripts keep working.
-- Don't weaken the agent's guardrails in `agent/sre_agent/tools.py`
-  (allow-list, revision check, human confirmation).
+- Don't weaken the agent's guardrails: allow-list, revision check, scale-up-only caps in
+  `plan_scale`, human confirmation, the policy defaults in `policy.py`, or the caller
+  checks in `service/main.py` (Pub/Sub token, approver token, Slack signature).
+- Never print or commit Slack webhook URLs, signing secrets or SMTP passwords; they live
+  in Secret Manager (`scripts/06-notify-secrets.sh`).
 - Put generated Terraform under `alerting/terraform/`.

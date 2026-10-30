@@ -6,6 +6,7 @@ Deploy a good revision with FAILURE_RATE=0, then a bad one with FAILURE_RATE=0.5
 import logging
 import os
 import random
+import time
 import uuid
 
 from flask import Flask, jsonify, request
@@ -15,6 +16,9 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 log = logging.getLogger("checkout")
 
 FAILURE_RATE = float(os.environ.get("FAILURE_RATE", "0"))
+# Resource-exhaustion scenario: burn CPU and hold memory on every checkout.
+BURN_MS = int(os.environ.get("BURN_MS", "0"))
+HOLD_MB = int(os.environ.get("HOLD_MB", "0"))
 VERSION = os.environ.get("APP_VERSION", "v1")
 REVISION = os.environ.get("K_REVISION", "local")
 
@@ -28,6 +32,12 @@ def health():
 @app.get("/checkout")
 def checkout():
     order_id = str(uuid.uuid4())[:8]
+    hold = bytearray(HOLD_MB * 1024 * 1024) if HOLD_MB else None  # released when the request ends
+    if BURN_MS:
+        end = time.perf_counter() + BURN_MS / 1000
+        while time.perf_counter() < end:
+            pass
+    del hold
     if random.random() < FAILURE_RATE:
         # Same message every time so the agent has clear evidence to cite.
         log.error("checkout failed order=%s version=%s: PaymentGatewayTimeout "

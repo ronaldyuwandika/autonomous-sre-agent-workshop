@@ -16,7 +16,7 @@ for sa in checkout-runtime sre-agent pubsub-pusher; do
 done
 
 echo "==> Read-only project roles for the agent (least privilege)"
-for role in roles/logging.viewer roles/run.viewer roles/aiplatform.user; do
+for role in roles/logging.viewer roles/monitoring.viewer roles/run.viewer roles/aiplatform.user; do
   gcloud projects add-iam-policy-binding "$PROJECT_ID" --member "serviceAccount:$AGENT_SA" \
     --role "$role" --condition=None --quiet >/dev/null
 done

@@ -1,0 +1,11 @@
+{
+  "version": "1.2",
+  "incident": {
+    "incident_id": "manual-demo-002",
+    "state": "open",
+    "policy_name": "checkout saturation",
+    "condition_name": "checkout CPU p99 > 80%",
+    "resource": { "type": "cloud_run_revision", "labels": { "service_name": "checkout" } },
+    "summary": "CPU utilization p99 for checkout is above the threshold of 0.8."
+  }
+}
