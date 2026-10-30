@@ -11,23 +11,11 @@ echo "==> Google Cloud Developer plugin (gcloud, IAM, onboarding, Developer Know
 agy plugin install https://github.com/google/skills/plugins/cloud/google-cloud-developer
 gcloud services enable developerknowledge.googleapis.com --project "$PROJECT_ID"
 
-cat <<'TXT'
-
-==> Google Cloud skills. When prompted, choose Antigravity CLI as the target agent
-    and project scope, and tick at least:
-      cloud-run-basics
-      cloud-run-alert-configuration
-      cloud-monitoring-notification-channels-configuration
-      cloud-logging-query-generation
-      google-cloud-slo-alert-configuration   (bonus)
-TXT
+echo "==> Google Cloud skills. When prompted, choose Antigravity CLI as the target agent"
+echo "# tick cloud-run-*, cloud-monitoring-*, cloud-logging-query-generation (google-cloud-slo-alert-configuration for the bonus)"
 npx skills add google/skills
 
-cat <<'TXT'
-
-==> ADK skills from agents-cli. Same target agent; tick google-agents-cli-adk-code
-    (google-agents-cli-deploy and -eval are useful later).
-TXT
+echo "==> ADK skills from agents-cli. Same target agent; tick google-agents-cli-adk-code"
 npx skills add google/agents-cli
 
 echo "Done. Start Antigravity CLI in this folder: agy"
