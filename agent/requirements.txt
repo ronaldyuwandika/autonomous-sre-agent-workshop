@@ -1,4 +1,4 @@
-google-adk>=2.13,<3
+google-adk==2.13.0            # latest release; needs Python 3.11+
 google-cloud-logging>=3.11,<4
-google-cloud-run>=0.10,<1
 google-cloud-monitoring>=2.22,<3
+google-cloud-run>=0.10,<1

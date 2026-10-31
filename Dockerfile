@@ -1,5 +1,5 @@
-# Build from the repo root:  gcloud builds submit --tag ... -f service/Dockerfile .
-# (scripts/deploy-agent.sh does this for you)
+# Built from the repo root by scripts/04-deploy-agent.sh (gcloud run deploy --source .).
+# Python 3.12: google-adk 2.13 needs 3.11+.
 FROM python:3.12-slim
 WORKDIR /srv
 COPY agent/requirements.txt agent-requirements.txt

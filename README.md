@@ -1,6 +1,6 @@
 # Can Your Cloud Fix Itself? — Autonomous SRE Agent with Google Cloud & Agent Skills
 
-Hands-on workshop for **Road to DevFest Cloud Surabaya 2026** (31 Oct 2026, 90 min).
+Hands-on workshop for **DevFest Cloud Surabaya 2026** (31 Oct 2026, 90 min).
 You build an SRE agent with Google ADK + Gemini that diagnoses Cloud Run incidents
 (a bad release, or CPU/memory exhaustion), reports its analysis to **Slack and email**,
 and fixes them by **rollback, scale-up or scale-out**: either after a human presses
@@ -62,8 +62,16 @@ Each lab is hybrid: the scripts and reference code get you there reliably, and o
 
 ## Before the workshop
 
+```bash
+git clone https://github.com/ronaldyuwandika/autonomous-sre-agent-workshop.git
+cd autonomous-sre-agent-workshop
+```
+
 - A GCP project with billing (or event credits); `gcloud` logged in and
   `gcloud config set project <your-project-id>`
+- macOS or Linux works as is. **Windows: use WSL. No install at all: use Cloud Shell.** Steps for both:
+  [`docs/setup-wsl-and-cloud-shell.md`](docs/setup-wsl-and-cloud-shell.md)
+- Python 3.11+; check everything with `./scripts/check-env.sh` (read-only)
 - [Antigravity CLI](https://antigravity.google/) and Node.js (for `npx`) on your laptop
 - Install the skills once:
 
@@ -98,10 +106,16 @@ Then run the SRE agent:
 
 ```bash
 cd agent
-python3 -m venv .venv && source .venv/bin/activate
+python3 -m venv .venv && source .venv/bin/activate   # Python 3.11+ (google-adk 2.13)
 pip install -r requirements.txt
 cp .env.example sre_agent/.env   # set GOOGLE_CLOUD_PROJECT
 adk web                          # Web Preview / localhost:8000
+```
+
+**How to run Google Cloud Console**
+
+```bash
+adk web --host 0.0.0.0 --port 8000 --allow_origins "regex:https://.*\.cloudshell\.dev"
 ```
 
 Ask: **"Why is checkout failing?"** It should name the newest revision and cite

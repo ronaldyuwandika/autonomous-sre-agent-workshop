@@ -1,7 +1,7 @@
 # Shared settings. Sourced by every script; override any value by exporting it first.
 export PROJECT_ID="${PROJECT_ID:-$(gcloud config get-value project 2>/dev/null)}"
 export REGION="${REGION:-asia-southeast2}"            # Jakarta
-export GEMINI_LOCATION="${GEMINI_LOCATION:-us-central1}"
+export GEMINI_LOCATION="${GEMINI_LOCATION:-global}"   # Vertex AI endpoint for Gemini; Cloud Run stays in REGION
 export APP_SERVICE="${APP_SERVICE:-checkout}"
 export AGENT_SERVICE="${AGENT_SERVICE:-sre-agent}"
 export TOPIC="${TOPIC:-sre-alerts}"

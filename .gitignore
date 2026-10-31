@@ -8,3 +8,5 @@ venv/
 *.tfstate
 *.tfstate.*
 .terraform.lock.hcl
+# adk web session history (local only)
+.adk/
