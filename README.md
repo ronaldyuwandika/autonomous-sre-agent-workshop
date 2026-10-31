@@ -139,7 +139,7 @@ Then ask the SRE agent: **"Fix it."** `rollback_traffic` is registered with
 
 ## Lab 3 — Close the loop, approve in Slack (17 min)
 
-One-time Slack app (5 min, can be pre-work): create an app at api.slack.com/apps,
+One-time Slack setup (10 min, can be pre-work; full steps in [`docs/slack-setup.md`](docs/slack-setup.md)): create an app at api.slack.com/apps,
 turn on **Incoming Webhooks** (add one to your channel) and **Interactivity**, and
 note the **Signing Secret**. Email is optional (any SMTP server; Gmail needs an app password).
 
