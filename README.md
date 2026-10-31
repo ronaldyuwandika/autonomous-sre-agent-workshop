@@ -1,6 +1,6 @@
 # Can Your Cloud Fix Itself? — Autonomous SRE Agent with Google Cloud & Agent Skills
 
-Hands-on workshop for **DevFest Cloud Surabaya 2026** (21 Nov 2026, 90 min).
+Hands-on workshop for **Road to DevFest Cloud Surabaya 2026** (31 Oct 2026, 90 min).
 You build an SRE agent with Google ADK + Gemini that diagnoses Cloud Run incidents
 (a bad release, or CPU/memory exhaustion), reports its analysis to **Slack and email**,
 and fixes them by **rollback, scale-up or scale-out**: either after a human presses
