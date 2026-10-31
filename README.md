@@ -25,6 +25,13 @@ checkout (Cloud Run) ─5xx / CPU / mem─▶ Cloud Monitoring alert ──▶ P
 | Approve (default) | `AUTONOMY=approve` | Analysis + **Approve / Reject** buttons in Slack, copy by email; nothing changes until an approver clicks |
 | Self-healing | `AUTONOMY=auto` + `AUTO_ACTIONS=scale` | Scale-up/out runs at once, then the analysis and the result go to Slack + email; rollbacks still wait for a click |
 
+## Slides and videos
+
+**Road to DevFest Cloud '26 #1** (31 Oct 2026) · Ronald Dimas Yuwandika, Organizer, GDG Cloud Surabaya
+
+- Slides: sent to participants as a PDF by email
+- Videos: MP4 walkthroughs, one per lab, in [`videos/`](videos/)
+
 ## Two agents, two jobs
 
 | Agent | What it is | Where |
